@@ -14,8 +14,7 @@ class TodoListPage extends StatelessWidget {
     return ListView.builder(
         itemCount: viewModel.todos.length,
         itemBuilder: (context, index) {
-          final todo = viewModel.todos[index];
-          return TodoCard(todo: todo);
+          return TodoCard(index: index);
         }
     );
   }

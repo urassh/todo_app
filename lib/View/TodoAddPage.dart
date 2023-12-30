@@ -11,6 +11,7 @@ class TodoAddPage extends StatefulWidget {
 
 class _TodoAddPageState extends State<TodoAddPage> {
   String _text = '';
+  bool isImportant = false;
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +25,28 @@ class _TodoAddPageState extends State<TodoAddPage> {
             const SizedBox(height: 8),
 
             TextField(
-              onChanged: (String value) {
+                onChanged: (String value) {
+                  setState(() {
+                    _text = value;
+                  });
+                }
+            ),
+
+            const SizedBox(height: 8),
+
+            ElevatedButton.icon(
+              icon: Icon(
+                Icons.star,
+                color: isImportant ? Colors.yellow : Colors.white,
+              ),
+              label: const Text('Important'),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.green,
+                onPrimary: Colors.white,
+              ),
+              onPressed: () {
                 setState(() {
-                  _text = value;
+                  isImportant = isImportant ? false : true;
                 });
               },
             ),
@@ -40,7 +60,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
                     primary: Colors.blue
                 ),
                 onPressed: () {
-                  Todo newTodo = Todo(_text);
+                  Todo newTodo = Todo(name: _text, isImportant: isImportant);
                   Navigator.of(context).pop(newTodo);
                 },
                 child: const Text('リスト追加', style: TextStyle(color: Colors.white)),
