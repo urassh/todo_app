@@ -40,7 +40,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
                     primary: Colors.blue
                 ),
                 onPressed: () {
-                  Todo newTodo = Todo(_text);
+                  Todo newTodo = Todo(name: _text);
                   Navigator.of(context).pop(newTodo);
                 },
                 child: const Text('リスト追加', style: TextStyle(color: Colors.white)),

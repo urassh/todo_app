@@ -1,5 +1,6 @@
 class Todo {
   final String name;
+  final bool isImportant;
 
-  const Todo(this.name);
+  const Todo({required this.name, this.isImportant = false});
 }
